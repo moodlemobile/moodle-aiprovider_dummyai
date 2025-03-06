@@ -17,6 +17,7 @@
 namespace aiprovider_dummyai;
 
 use core_ai\aiactions;
+use core_ai\form\action_settings_form;
 
 /**
  * Class provider.
@@ -28,17 +29,11 @@ use core_ai\aiactions;
 class provider extends \core_ai\provider {
 
     /**
-     * Class constructor.
-     */
-    public function __construct() {
-    }
-
-    /**
      * Get the list of actions that this provider supports.
      *
      * @return array An array of action class names.
      */
-    public function get_action_list(): array {
+    public static function get_action_list(): array {
         return [
             \core_ai\aiactions\generate_text::class,
             \core_ai\aiactions\generate_image::class,
@@ -55,18 +50,14 @@ class provider extends \core_ai\provider {
      * Get any action settings for this provider.
      *
      * @param string $action The action class name.
-     * @param \admin_root $ADMIN The admin root object.
-     * @param string $section The section name.
-     * @param bool $hassiteconfig Whether the current user has moodle/site:config capability.
-     * @return array An array of settings.
+     * @param array $customdata The customdata for the form.
+     * @return action_settings_form|bool The settings form for this action or false in no settings.
      */
-    public function get_action_settings(
+    public static function get_action_settings(
         string $action,
-        \admin_root $ADMIN,
-        string $section,
-        bool $hassiteconfig
-    ): array {
-        return [];
+        array $customdata = [],
+    ): action_settings_form|bool {
+        return false;
     }
 
     /**
