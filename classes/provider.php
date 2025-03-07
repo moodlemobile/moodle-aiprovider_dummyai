@@ -33,7 +33,7 @@ class provider extends \core_ai\provider {
      *
      * @return array An array of action class names.
      */
-    public static function get_action_list(): array {
+    public function get_action_list(): array {
         return [
             \core_ai\aiactions\generate_text::class,
             \core_ai\aiactions\generate_image::class,
@@ -53,11 +53,13 @@ class provider extends \core_ai\provider {
      * @param array $customdata The customdata for the form.
      * @return action_settings_form|bool The settings form for this action or false in no settings.
      */
-    public static function get_action_settings(
+    public function get_action_settings(
         string $action,
-        array $customdata = [],
-    ): action_settings_form|bool {
-        return false;
+        \admin_root $ADMIN,
+        string $section,
+        bool $hassiteconfig
+    ): array {
+        return [];
     }
 
     /**
