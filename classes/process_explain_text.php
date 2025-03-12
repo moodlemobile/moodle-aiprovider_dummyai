@@ -16,6 +16,7 @@
 
 namespace aiprovider_dummyai;
 
+
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
@@ -23,19 +24,17 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
- * Class process text generation.
+ * Class process text explanations.
  *
  * @package    aiprovider_dummyai
  * @copyright  2025 Pau Ferrer <pau@moodle.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class process_generate_text extends abstract_processor {
+class process_explain_text extends process_generate_text {
+
     #[\Override]
     protected function get_endpoint(): UriInterface {
-        // Loripsum API is down, chaging to baconipsum.
-        // https://loripsum.net/api/plaintext
-
-        return new Uri('https://baconipsum.com/api/?type=meat-and-filler&format=text');
+        return new Uri('https://chiquito-ipsum.netlify.app/');
     }
 
     #[\Override]
@@ -63,4 +62,5 @@ class process_generate_text extends abstract_processor {
             'generatedcontent' => $responsebody,
         ];
     }
+
 }

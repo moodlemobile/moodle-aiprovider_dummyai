@@ -38,6 +38,7 @@ class provider extends \core_ai\provider {
             \core_ai\aiactions\generate_text::class,
             \core_ai\aiactions\generate_image::class,
             \core_ai\aiactions\summarise_text::class,
+            \core_ai\aiactions\explain_text::class,
         ];
     }
 
