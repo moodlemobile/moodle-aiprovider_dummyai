@@ -32,7 +32,10 @@ use Psr\Http\Message\UriInterface;
 class process_generate_text extends abstract_processor {
     #[\Override]
     protected function get_endpoint(): UriInterface {
-        return new Uri('https://loripsum.net/api/plaintext');
+        // Loripsum API is down, chaging to baconipsum.
+        // https://loripsum.net/api/plaintext
+
+        return new Uri('https://baconipsum.com/api/?type=meat-and-filler&format=text');
     }
 
     #[\Override]
@@ -41,7 +44,7 @@ class process_generate_text extends abstract_processor {
             method: 'GET',
             uri: '',
             headers: [
-                'Content-Type' => 'text/html',
+                'Content-Type' => 'text/plain',
             ],
         );
     }
